@@ -1,6 +1,8 @@
 coverage.out
 .DS_Store
 dev.env.sh
-.idea
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/
 cpp/build/
 cpp/cmake-build-debug/
