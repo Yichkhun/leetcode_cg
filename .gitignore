@@ -1,0 +1,6 @@
+coverage.out
+.DS_Store
+dev.env.sh
+.idea
+cpp/build
+cpp/cmake-build-debug
