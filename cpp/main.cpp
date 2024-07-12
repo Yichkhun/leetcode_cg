@@ -47,7 +47,47 @@ void test_find_max_len_sub_str() {
     std::cout<<"max-len"<<max<<std::endl;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//leetcode 1 两数之和
+//https://leetcode.cn/problems/two-sum/description/
+vector<int> find_target_sum_index(vector<int> srcList, int target) {
+    vector<int> result;
+    //为了减少时间复杂度，以空间换时间即可
+    unordered_map<int, int> hashMap;
+    //循环遍历整个数组
+    int length = srcList.size();
+    for (int i=0; i<length; i++) {
+        //利用hash表来查询目标值
+        auto f = hashMap.find(target - srcList[i]);
+        if (f != hashMap.end()) {
+            result.push_back(f->second);
+            result.push_back(i);
+            return result;
+        }
+        hashMap[srcList[i]]= i;
+    }
+
+    return result;
+}
+
+void test_find_target_sum_index() {
+    vector<int> src;
+    src.push_back(1);
+    src.push_back(2);
+    src.push_back(3);
+    src.push_back(4);
+
+    vector<int> res = find_target_sum_index(src, 3);
+    if (!res.empty()) {
+        std::cout<<res[0]<<"-"<<res[1]<<std::endl;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 int main() {
-    test_find_max_len_sub_str();
+    test_find_target_sum_index();
     return 0;
 }
