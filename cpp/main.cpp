@@ -85,8 +85,48 @@ void test_find_target_sum_index() {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//单链表翻转
+struct listNode {
+    int val;
+    listNode * next;
+};
+
+listNode* reverse_list_node(listNode* head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    listNode * cur = head;
+    listNode * re = NULL;
+
+    while (cur != NULL) {
+        listNode * temp = cur;
+        cur = cur->next;
+        temp->next = re;
+        re = temp;
+    }
+
+    return re;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//求树深度
+struct dep_binary_tree {
+    int value;
+    dep_binary_tree * left;
+    dep_binary_tree * right;
+};
+
+//递归解法
+int get_binary_max_length(dep_binary_tree * root) {
+    if (root == NULL) {
+        return 0;
+    }
+   return max(get_binary_max_length(root->left), get_binary_max_length(root->right)) + 1;
+}
 
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main() {
     test_find_target_sum_index();
     return 0;
